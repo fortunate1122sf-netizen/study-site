@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>[メモ][Java]1日目 - Spring Boot Hello API</title>
+  <style>
+    body { max-width: 820px; margin: 40px auto; padding: 0 16px; line-height: 1.8; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif; }
+    pre { background: #f4f4f4; padding: 12px; overflow-x: auto; }
+    code { font-family: Consolas, Monaco, monospace; }
+    h1, h2, h3 { margin-top: 1.5em; }
+  </style>
+</head>
+<body>
+  <h1>[メモ][Java]1日目</h1>
+  <p><strong>リヴァ</strong><br>
+  2025年8月4日 17:59</p>
+
+  <h2>目的</h2>
+  <p>Spring Bootで最小のAPIを作って「Hello, JAVA!」を返す</p>
+
+  <pre><code>@RestController
+public class HelloController {
+
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "Hello, JAVA!";
+    }
+}
+</code></pre>
+
+  <h3>これで得られる力</h3>
+  <ul>
+    <li><code>@RestController</code> がどんな動きをするか体験で理解</li>
+    <li><code>@GetMapping</code> のルーティングの仕組み</li>
+    <li>IntelliJやSpring Bootプロジェクトの使い方</li>
+    <li><code>curl</code>やブラウザでの確認方法</li>
+  </ul>
+
+  <h2>IntelliJでSpring Bootアプリを実行する方法</h2>
+  <ol>
+    <li><strong>main() メソッドを探す（エントリーポイント）</strong><br>
+    通常は <code>src/main/java/〜〜〜/Application.java</code> にある👇</li>
+  </ol>
+
+  <pre><code>@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>
+
+  <ol start="2">
+    <li>このクラスを右クリック → <strong>Run 'Application.main()'</strong> を選択<br>
+    もしくはクラスの左横に ▶ マークが出てるので、それをクリックでもOK。</li>
+    <li>コンソールに <code>Started Application in xxx seconds</code> と出たら成功<br>
+    この状態でAPIを叩けるようになってる。デフォルトでは <code>http://localhost:8080/</code> に立ち上がってる。</li>
+    <li><code>curl</code>かブラウザ、またはPostmanでアクセスしてみよう<br>
+    たとえば <code>/hello</code> というエンドポイントがあれば<br>
+    <code>http://localhost:8080/hello</code> にアクセスすればレスポンスが返ってくる。</li>
+  </ol>
+
+  <p><a href="/">← トップへ戻る</a></p>
+</body>
+</html>
